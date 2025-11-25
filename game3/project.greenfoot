@@ -2,15 +2,31 @@
 class.B.image=lighthouse.png
 class.C.image=car03-n.png
 class.D.image=smiley3.png
+<<<<<<< HEAD
+class.MyWorld.image=Adobe\ Express\ -\ file.jpg
+class.Roulette.image=Roulette.png
+=======
 class.R.image=publicdomainq-0007601btydle.png
 class.Taro.image=hair_skinhead_megane.png
+<<<<<<< HEAD
 class.status_bw_heart.image=bw_heart.png
 class.status_heart.image=heart_gloss.png
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=552
 editor.fx.0.y=100
+=======
+>>>>>>> bd7ebce831884d6f3c0fe98e1e7f859d0f306997
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+<<<<<<< HEAD
+height=752
+=======
+>>>>>>> c9e919f5a9fa75f82e19ef833adfd5dda8e5170c
 height=1056
+>>>>>>> bd7ebce831884d6f3c0fe98e1e7f859d0f306997
 package.numDependencies=0
 package.numTargets=9
 project.charset=UTF-8
@@ -56,7 +72,15 @@ target4.width=110
 target4.x=0
 target4.y=0
 target5.height=50
+<<<<<<< HEAD
 target5.name=C
+=======
+<<<<<<< HEAD
+target5.name=Roulette
+=======
+target5.name=Taro
+>>>>>>> bd7ebce831884d6f3c0fe98e1e7f859d0f306997
+>>>>>>> c9e919f5a9fa75f82e19ef833adfd5dda8e5170c
 target5.showInterface=false
 target5.type=ClassTarget
 target5.width=80
@@ -91,7 +115,14 @@ target9.width=80
 target9.x=0
 target9.y=0
 version=3.0.0
+<<<<<<< HEAD
+width=1096
+world.lastInstantiated=MyWorld
+xPosition=259
+yPosition=197
+=======
 width=1936
 world.lastInstantiated=MyWorld
 xPosition=0
 yPosition=0
+>>>>>>> bd7ebce831884d6f3c0fe98e1e7f859d0f306997
