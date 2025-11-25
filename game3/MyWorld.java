@@ -20,6 +20,14 @@ public class MyWorld extends World
         super(851, 567, 1); 
         showText( "サイコロクエスト", 450, 300 );
         showText( "Spaceを押してスタート", 450, 450 );
+<<<<<<< HEAD
         showText( "1", 300, 50 );
+=======
+
+      
+
+   
+     
+>>>>>>> 9b9d5aa8d130788175daa1f2c56c8e84e146f618
     }
 }
