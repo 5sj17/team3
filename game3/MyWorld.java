@@ -20,6 +20,10 @@ public class MyWorld extends World
         super(851, 567, 1); 
         showText( "サイコロクエスト", 450, 300 );
         showText( "Spaceを押してスタート", 450, 450 );
+        
+        addObject( new status_bw_heart(), 70, 50 );//ステータス表示
+        addObject( new status_heart(), 200, 50 );
+        addObject( new status_heart(), 330, 50 );
 
       
 

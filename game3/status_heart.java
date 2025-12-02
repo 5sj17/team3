@@ -12,15 +12,18 @@ public class status_heart extends Actor
      * Act - do whatever the status_heart wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void MyActor()
+    
+    public status_heart()
     {
-       GreenfootImage image = getImage();
-       int newWidth = image.getWidth() / 2; // 幅を半分に計算
-       int newHeight = image.getHeight() / 2; // 高さを半分に計算
-       image.scale(newWidth, newHeight); // 新しいサイズにスケール
-       setImage(image); 
+        // 現在の画像を取得
+        GreenfootImage image = getImage();
         
+        image.scale(100,70);
+        
+        // サイズ変更した画像をセットする
+        setImage(image);
     }
+    
     public void act() 
     {
        
