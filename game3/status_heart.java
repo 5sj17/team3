@@ -18,7 +18,7 @@ public class status_heart extends Actor
         // 現在の画像を取得
         GreenfootImage image = getImage();
         
-        image.scale(100,70);
+        image.scale(90,80);
         
         // サイズ変更した画像をセットする
         setImage(image);
