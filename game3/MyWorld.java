@@ -9,9 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private boolean taroAdded = false;
+
     
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
+
+    private boolean bunnki1Added = false;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -29,9 +33,14 @@ public class MyWorld extends World
     {
         if (Greenfoot.isKeyDown("space") && !taroAdded)
         {
-            addObject(new Taro(), 150, 400); 
+            addObject(new Taro(), 400, 350); 
             taroAdded = true; // 二度追加されないようにする
             status_prepare();
+        }
+        if (Greenfoot.isKeyDown("space") && !bunnki1Added)
+        {
+            addObject(new Bunnki1(), 400, 250); 
+            bunnki1Added = true; // 二度追加されないようにする
         }
         if (Greenfoot.isKeyDown("space"))
         {
@@ -40,11 +49,6 @@ public class MyWorld extends World
             
         }
      
-        //addObject( new status_bw_heart(), 70, 50 );//ステータス表示
-        //addObject( new status_heart(), 200, 50 );
-        //addObject( new status_heart(), 330, 50 );
-        
-        
 
     }
     public void status_prepare()
