@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private boolean taroAdded = false;
+    private boolean bunnki1Added = false;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -26,8 +27,13 @@ public class MyWorld extends World
     {
         if (Greenfoot.isKeyDown("space") && !taroAdded)
         {
-            addObject(new Taro(), 150, 400); 
+            addObject(new Taro(), 400, 350); 
             taroAdded = true; // 二度追加されないようにする
+        }
+        if (Greenfoot.isKeyDown("space") && !bunnki1Added)
+        {
+            addObject(new Bunnki1(), 400, 250); 
+            bunnki1Added = true; // 二度追加されないようにする
         }
         if (Greenfoot.isKeyDown("space"))
         {
