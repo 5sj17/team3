@@ -20,6 +20,8 @@ public class MyWorld extends World
         super(851, 567, 1); 
         showText( "サイコロクエスト", 450, 300 );
         showText( "Spaceを押してスタート", 450, 450 );
+        
+        addObject(new R(), 300, 200);
 
       
 

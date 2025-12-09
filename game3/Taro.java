@@ -13,11 +13,10 @@ public class Taro extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
-    {
-        GreenfootImage Taro = getImage(); // 現在の画像を取得
-        int newWidth = Taro.getWidth() / 2; // 幅を半分に計算
-        int newHeight = Taro.getHeight() / 2; // 高さを半分に計算
-        Taro.scale(newWidth, newHeight); // 新しいサイズにスケール
-        setImage(Taro); // スケールした画像をセット
+    {        
+        if( Greenfoot.isKeyDown( "space" ) ){
+        getWorld().showText( "", 450, 300 );
+        getWorld().showText( "", 450, 450 );
+}
     }    
 }
