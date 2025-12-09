@@ -26,7 +26,7 @@ public class MyWorld extends World
         addObject( new status_heart(), 200, 50 );
         addObject( new status_heart(), 330, 50 );
 
-        showText( "1", 300, 50 );
+        
 
     }
 }
