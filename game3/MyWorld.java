@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private boolean taroAdded = false;
+    private boolean RAdded = false;
+    private GreenfootImage yaji;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,8 +22,7 @@ public class MyWorld extends World
         super(851, 567, 1); 
         showText( "サイコロクエスト", 450, 300 );
         showText( "Spaceを押してスタート", 450, 450 );
-        
-        addObject(new R(), 300, 200);
+
     }
 
     public void act()
@@ -36,7 +37,13 @@ public class MyWorld extends World
             showText( "", 450, 300 );
             showText( "", 450, 450 ); 
         }
-     
+        if (Greenfoot.isKeyDown("space") && !RAdded)
+        {
+            addObject(new yaji(), 720, 100); 
+            addObject(new R(), 600, 100); 
+            RAdded = true; // 二度追加されないようにする
+        }
+
         addObject( new status_bw_heart(), 70, 50 );//ステータス表示
         addObject( new status_heart(), 200, 50 );
         addObject( new status_heart(), 330, 50 );
