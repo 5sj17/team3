@@ -19,7 +19,7 @@ public class Taro extends Actor
      */
     public Taro() {
         baseImg = new GreenfootImage("hair_skinhead_megane.png");
-        baseImg.scale(250,250);   // ←  最初から縮小しておく
+        baseImg.scale(200,250);   // ←  最初から縮小しておく
         setImage(baseImg);        // ← 初期表示も正しい大きさになる
     }
     /**
@@ -29,7 +29,6 @@ public class Taro extends Actor
     public void act() 
     {        
         if( Greenfoot.isKeyDown( "space" ) ){
-            getWorld().showText( "", 450, 300 );
             getWorld().showText( "", 450, 450 );
         }
         // スペースキーが押されたか、かつまだ画像が表示されていないかを確認
