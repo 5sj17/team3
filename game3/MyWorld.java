@@ -14,6 +14,7 @@ public class MyWorld extends World
     
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
+    public int pro_count = 0;
 
     /**
      * Constructor for objects of class MyWorld.
