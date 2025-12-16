@@ -11,17 +11,14 @@ public class MyWorld extends World
     private boolean taroAdded = false;
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
-    
+    private boolean bunnki2Added = false;
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
 
-<<<<<<< HEAD
-    private boolean bunnki1Added = false;
-    private boolean huki1Added = false;
-    private boolean huk21Added = false;
 
-=======
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
+    private boolean huki1Added = false;
+    private boolean huki2Added = false;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -49,11 +46,20 @@ public class MyWorld extends World
             addObject(new Bunnki1(), 430, 250); 
             bunnki1Added = true; // 二度追加されないようにする
         }
-        
+        if (Greenfoot.isKeyDown("Enter") && !bunnki2Added)
+        {
+            addObject(new Bunnki2(), 430, 220); 
+            bunnki2Added = true; // 二度追加されないようにする
+        }
         if (Greenfoot.isKeyDown("space") && !huki1Added)
         {
             addObject(new Huki1(), 430, 450); 
             huki1Added = true; // 二度追加されないようにする
+        }
+        if (Greenfoot.isKeyDown("Enter") && !huki2Added)
+        {
+            addObject(new Huki2(), 430, 495); 
+            huki2Added = true; // 二度追加されないようにする
         }
         
         if (Greenfoot.isKeyDown("space"))
@@ -68,6 +74,19 @@ public class MyWorld extends World
             addObject(new R(), 600, 100); 
             RAdded = true; // 二度追加されないようにする
         }
+        /*
+        if(rure_count == 1)
+        {
+            if(rure == 1)
+            {
+               トラブルマスの処理 
+            }
+            else
+            {
+                ラッキーマスの処理
+            }           
+        }
+        */
 
         addObject( new status_bw_heart(), 70, 50 );//ステータス表示
         addObject( new status_heart(), 200, 50 );
