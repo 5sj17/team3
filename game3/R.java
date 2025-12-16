@@ -3,6 +3,7 @@ import greenfoot.*;
 public class R extends Actor
 {
     private GreenfootImage baseImg;
+    private boolean enterPressed = false;
 
     // コンストラクタ（最初に一度だけ実行される）
     public R() {
@@ -13,23 +14,23 @@ public class R extends Actor
 
     public void act()
     {
-        // Spaceキーが押されたら動作
-        if (Greenfoot.isKeyDown("space")) {
+        String key = Greenfoot.getKey();
 
-            // 1〜6 の乱数を取得
+        if ("enter".equals(key)) {
+
             int n = Greenfoot.getRandomNumber(6) + 1;
 
-            
             switch (n) {
-                case 1: setRotation(420);  break;
-                case 2: setRotation(360);  break;
-                case 3: setRotation(300);  break;
-                case 4: setRotation(240);  break;
-                case 5: setRotation(180);  break;
-                case 6: setRotation(120);  break;
+                case 1: setRotation(420); break;
+                case 2: setRotation(360); break;
+                case 3: setRotation(300); break;
+                case 4: setRotation(240); break;
+                case 5: setRotation(180); break;
+                case 6: setRotation(120); break;
             }
 
-          
+            MyWorld world = (MyWorld)getWorld();
+            world.rouletteSpin();
         }
     }
 }

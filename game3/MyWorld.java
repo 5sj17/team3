@@ -11,17 +11,16 @@ public class MyWorld extends World
     private boolean taroAdded = false;
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
-    
+
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
 
-<<<<<<< HEAD
-    private boolean bunnki1Added = false;
     private boolean huki1Added = false;
-    private boolean huk21Added = false;
+    private boolean huki2Added = false;
 
-=======
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
+    private int rouletteCount = 0;   // ルーレットを回した回数
+    private final int MAX_ROULETTE = 5;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -49,18 +48,18 @@ public class MyWorld extends World
             addObject(new Bunnki1(), 430, 250); 
             bunnki1Added = true; // 二度追加されないようにする
         }
-        
-        if (Greenfoot.isKeyDown("space") && !huki1Added)
+
+        if (Greenfoot.isKeyDown("space") && !huki2Added)
         {
             addObject(new Huki1(), 430, 450); 
-            huki1Added = true; // 二度追加されないようにする
+            huki2Added = true; // 二度追加されないようにする
         }
-        
+
         if (Greenfoot.isKeyDown("space"))
         {
             showText( "", 450, 300 );
             showText( "", 450, 450 ); 
-            
+
         }
         if (Greenfoot.isKeyDown("space") && !RAdded)
         {
@@ -74,12 +73,14 @@ public class MyWorld extends World
         addObject( new status_heart(), 330, 50 );
 
     }
+
     public void status_prepare()
     {
         for(int i=0;i<MAX_HP;i++){
             addObject(new status_heart(),70+(130*i),50);
         }
     }
+
     public void status_damage()
     {
         if(currentHp>0){
@@ -98,9 +99,20 @@ public class MyWorld extends World
                 addObject(new status_bw_heart(),70+(130*0),50);
                 Greenfoot.stop();
                 break;
-                
+
+            }
+        }   
+    }
+
+    public void rouletteSpin()
+    {
+        rouletteCount++;
+
+        showText("ルーレット回数：" + rouletteCount + " / " + MAX_ROULETTE, 700, 500);
+
+        if (rouletteCount >= MAX_ROULETTE) {
+            Greenfoot.setWorld(new EndingWorld());
         }
-    }      
     }
     //public void status_heal()
     //{

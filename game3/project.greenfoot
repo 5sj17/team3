@@ -19,44 +19,33 @@ dependency2.from=MyWorld
 dependency2.to=Taro
 dependency2.type=UsesDependency
 dependency3.from=MyWorld
-<<<<<<< HEAD
-dependency3.to=Huki1
-dependency3.type=UsesDependency
-dependency4.from=MyWorld
-dependency4.to=status_heart
-dependency4.type=UsesDependency
-dependency5.from=MyWorld
-dependency5.to=status_bw_heart
-dependency5.type=UsesDependency
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
-height=752
-package.numDependencies=5
-=======
 dependency3.to=Bunnki1
 dependency3.type=UsesDependency
 dependency4.from=MyWorld
-dependency4.to=yaji
+dependency4.to=Huki1
 dependency4.type=UsesDependency
 dependency5.from=MyWorld
-dependency5.to=R
+dependency5.to=yaji
 dependency5.type=UsesDependency
 dependency6.from=MyWorld
-dependency6.to=status_bw_heart
+dependency6.to=R
 dependency6.type=UsesDependency
 dependency7.from=MyWorld
-dependency7.to=status_heart
+dependency7.to=status_bw_heart
 dependency7.type=UsesDependency
+dependency8.from=MyWorld
+dependency8.to=status_heart
+dependency8.type=UsesDependency
+dependency9.from=R
+dependency9.to=MyWorld
+dependency9.type=UsesDependency
 editor.fx.0.height=739
 editor.fx.0.width=816
-editor.fx.0.x=613
-editor.fx.0.y=109
+editor.fx.0.x=879
+editor.fx.0.y=188
 height=752
-package.numDependencies=7
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
-package.numTargets=13
+package.numDependencies=9
+package.numTargets=16
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -79,51 +68,54 @@ target1.width=80
 target1.x=0
 target1.y=0
 target10.height=50
-target10.name=R
+target10.name=title
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=80
 target10.x=0
 target10.y=0
 target11.height=50
-<<<<<<< HEAD
-target11.name=R
-=======
-target11.name=status_bw_heart
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
+target11.name=Taro
 target11.showInterface=false
 target11.type=ClassTarget
-target11.width=110
+target11.width=80
 target11.x=0
 target11.y=0
 target12.height=50
-<<<<<<< HEAD
-target12.name=status_bw_heart
-target12.showInterface=false
-target12.type=ClassTarget
-target12.width=110
-target12.x=0
-target12.y=0
-target13.height=50
-target13.name=MyWorld
-target13.showInterface=false
-target13.type=ClassTarget
-target13.width=80
-=======
-target12.name=MyWorld
+target12.name=R
 target12.showInterface=false
 target12.type=ClassTarget
 target12.width=80
 target12.x=0
 target12.y=0
 target13.height=50
-target13.name=yaji
+target13.name=status_bw_heart
 target13.showInterface=false
 target13.type=ClassTarget
 target13.width=110
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
 target13.x=0
 target13.y=0
+target14.height=50
+target14.name=EndingWorld
+target14.showInterface=false
+target14.type=ClassTarget
+target14.width=90
+target14.x=0
+target14.y=0
+target15.height=50
+target15.name=MyWorld
+target15.showInterface=false
+target15.type=ClassTarget
+target15.width=80
+target15.x=0
+target15.y=0
+target16.height=50
+target16.name=yaji
+target16.showInterface=false
+target16.type=ClassTarget
+target16.width=110
+target16.x=0
+target16.y=0
 target2.height=50
 target2.name=B
 target2.showInterface=false
@@ -142,11 +134,7 @@ target4.height=50
 target4.name=Bunnki1
 target4.showInterface=false
 target4.type=ClassTarget
-<<<<<<< HEAD
-target4.width=100
-=======
 target4.width=90
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
 target4.x=0
 target4.y=0
 target5.height=50
@@ -171,22 +159,14 @@ target7.width=80
 target7.x=0
 target7.y=0
 target8.height=50
-<<<<<<< HEAD
 target8.name=Huki2
-=======
-target8.name=title
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=80
 target8.x=0
 target8.y=0
 target9.height=50
-<<<<<<< HEAD
 target9.name=Huki1
-=======
-target9.name=Taro
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
 target9.showInterface=false
 target9.type=ClassTarget
 target9.width=80
@@ -195,15 +175,5 @@ target9.y=0
 version=3.0.0
 width=1132
 world.lastInstantiated=MyWorld
-<<<<<<< HEAD
-xPosition=814
-yPosition=29
-=======
-<<<<<<< HEAD
-xPosition=58
-yPosition=145
-=======
-xPosition=465
-yPosition=146
->>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
->>>>>>> 4f462679f0a5976fbecc78fc125f1ff3eaf89e0d
+xPosition=687
+yPosition=16
