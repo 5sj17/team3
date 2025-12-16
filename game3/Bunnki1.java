@@ -9,7 +9,7 @@ public class Bunnki1 extends Actor
         // 画像の読み込みとリサイズはコンストラクタで行います。
         specialImage = new GreenfootImage("分岐1.png");
         specialImage.scale(specialImage.getWidth() / 2, specialImage.getHeight() / 2);
-
+ 
         // 最初は画像をセットしないため、非表示になります。
         // または、透明な画像をセットする方法もありますが、この方法では画像がセットされない状態になります。
     }

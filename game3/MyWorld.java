@@ -15,6 +15,13 @@ public class MyWorld extends World
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
 
+<<<<<<< HEAD
+    private boolean bunnki1Added = false;
+    private boolean huki1Added = false;
+    private boolean huk21Added = false;
+
+=======
+>>>>>>> 45015c081abdeb131535414a41926ea58f6d459d
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -33,15 +40,22 @@ public class MyWorld extends World
     {
         if (Greenfoot.isKeyDown("space") && !taroAdded)
         {
-            addObject(new Taro(), 400, 350); 
+            addObject(new Taro(), 430, 350); 
             taroAdded = true; // 二度追加されないようにする
             status_prepare();
         }
         if (Greenfoot.isKeyDown("space") && !bunnki1Added)
         {
-            addObject(new Bunnki1(), 400, 250); 
+            addObject(new Bunnki1(), 430, 250); 
             bunnki1Added = true; // 二度追加されないようにする
         }
+        
+        if (Greenfoot.isKeyDown("space") && !huki1Added)
+        {
+            addObject(new Huki1(), 430, 450); 
+            huki1Added = true; // 二度追加されないようにする
+        }
+        
         if (Greenfoot.isKeyDown("space"))
         {
             showText( "", 450, 300 );
