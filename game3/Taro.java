@@ -33,7 +33,6 @@ public class Taro extends Actor
     public void act() 
     {        
         if( Greenfoot.isKeyDown( "space" ) ){
-            getWorld().showText( "", 450, 300 );
             getWorld().showText( "", 450, 450 );
         }
         // スペースキーが押されたか、かつまだ画像が表示されていないかを確認
