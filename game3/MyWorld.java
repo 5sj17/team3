@@ -9,13 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private boolean taroAdded = false;
-
+    private boolean RAdded = false;
     
     private int currentHp = 3;//ハートの初期値,現在
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
 
     private boolean bunnki1Added = false;
+    private boolean huki1Added = false;
+    private boolean huk21Added = false;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -26,38 +28,46 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
 
         super(851, 567, 1); 
-        showText( "サイコロクエスト", 450, 300 );
-        showText( "Spaceを押してスタート", 450, 450 ); 
+        addObject(new title(), 450, 250);
+        showText( "Spaceを押してスタート", 450, 450 );
+
     }
 
     public void act()
     {
         if (Greenfoot.isKeyDown("space") && !taroAdded)
         {
-            addObject(new Taro(), 400, 350); 
+            addObject(new Taro(), 430, 350); 
             taroAdded = true; // 二度追加されないようにする
             status_prepare();
         }
         if (Greenfoot.isKeyDown("space") && !bunnki1Added)
         {
-            addObject(new Bunnki1(), 400, 250); 
+            addObject(new Bunnki1(), 430, 250); 
             bunnki1Added = true; // 二度追加されないようにする
             status_prepare();
         }
+        
+        if (Greenfoot.isKeyDown("space") && !huki1Added)
+        {
+            addObject(new Huki1(), 430, 450); 
+            huki1Added = true; // 二度追加されないようにする
+        }
+        
         if (Greenfoot.isKeyDown("space"))
         {
             showText( "", 450, 300 );
             showText( "", 450, 450 ); 
             
         }
-        if (Greenfoot.isKeyDown("a"))//確認用消してもok
+
+        if (Greenfoot.isKeyDown("space") && !RAdded)
         {
-            status_damage();
+            addObject(new yaji(), 720, 100); 
+            addObject(new R(), 600, 100); 
+            RAdded = true; // 二度追加されないようにする
         }
-        if (Greenfoot.isKeyDown("s"))//確認用消してもok
-        {
-            status_heal();
-        }
+
 
     }
     //ハートを初期表示

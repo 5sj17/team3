@@ -30,13 +30,16 @@ public class Taro extends Actor
      * Act - do whatever the Taro wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-        public void act() 
-    {
+    public void act() 
+    {        
+        if( Greenfoot.isKeyDown( "space" ) ){
+            getWorld().showText( "", 450, 450 );
+        }
         // スペースキーが押されたか、かつまだ画像が表示されていないかを確認
         if (Greenfoot.isKeyDown("space") && !imageDisplayed)
         {
             setImage(specialImage); // 画像をセットして表示
             imageDisplayed = true; // 画像が表示されたことを記録
         } 
-    }        
+    }    
 }
