@@ -11,21 +11,17 @@ public class Taro extends Actor
 {
     // specialImageとimageDisplayedをクラスのフィールドとして宣言します。
     private GreenfootImage specialImage;
+    private GreenfootImage baseImg;
     private boolean imageDisplayed = false;
 
     /**
      * コンストラクタ: Taroクラスのオブジェクトが作成されるときに一度だけ実行されます。
      */
-    public Taro()
-    {
-        // 画像の読み込みとリサイズはコンストラクタで行います。
-        specialImage = new GreenfootImage("hair_skinhead_megane.png");
-        specialImage.scale(specialImage.getWidth() / 2, specialImage.getHeight() / 2);
-
-        // 最初は画像をセットしないため、非表示になります。
-        // または、透明な画像をセットする方法もありますが、この方法では画像がセットされない状態になります。
+    public Taro() {
+        baseImg = new GreenfootImage("hair_skinhead_megane.png");
+        baseImg.scale(200,250);   // ←  最初から縮小しておく
+        setImage(baseImg);        // ← 初期表示も正しい大きさになる
     }
-
     /**
      * Act - do whatever the Taro wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -38,7 +34,7 @@ public class Taro extends Actor
         // スペースキーが押されたか、かつまだ画像が表示されていないかを確認
         if (Greenfoot.isKeyDown("space") && !imageDisplayed)
         {
-            setImage(specialImage); // 画像をセットして表示
+            setImage(baseImg); // 画像をセットして表示
             imageDisplayed = true; // 画像が表示されたことを記録
         } 
     }    
