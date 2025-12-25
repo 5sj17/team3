@@ -9,12 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
 
+
     private boolean taroAdded = false;
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
 
    
+
 
     private boolean start = false;
 
@@ -25,6 +27,9 @@ public class MyWorld extends World
     
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
+    
+    private int rouletteCount = 0;   // ルーレットを回した回数
+    private final int MAX_ROULETTE = 5;
 
 
 
@@ -53,7 +58,12 @@ public class MyWorld extends World
         {
             startGame();
         }
+
+  
     }
+
+
+    
 
     private void startGame()
     {
@@ -98,6 +108,7 @@ public class MyWorld extends World
 
     
     //ハートを初期表示
+
     public void status_prepare()
     {
         int x = 70;    // 最初のX座標
@@ -111,8 +122,7 @@ public class MyWorld extends World
 
     public void status_damage()
     {
-        if(currentHp>0){
-            currentHp--;// ダメージを受けるたび
+       currentHp--;// ダメージを受けるたび
             int targetIndexToChange = currentHp;
             
             if (targetIndexToChange >= 0 && targetIndexToChange < 3) {
@@ -122,7 +132,19 @@ public class MyWorld extends World
                     System.out.println("Game Over!");
                     // ゲームオーバー処理
                 }
-            }
+            } 
+          
+    }
+
+    public void rouletteSpin()
+    {
+        rouletteCount++;
+
+        showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
+
+        if (rouletteCount >= MAX_ROULETTE) {
+            Greenfoot.setWorld(new EndingWorld());
+
         }
     }
     //回復用
