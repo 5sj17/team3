@@ -10,27 +10,23 @@ public class MyWorld extends World
 {
     private boolean taroAdded = false;
     private boolean RAdded = false;
-<<<<<<< HEAD
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
-=======
-    
->>>>>>> a94182bd195104a94af6811d0a5297581d5d95c4
+
+   
     private int currentHp = 3;//ハートの初期値,現在
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
 
-<<<<<<< HEAD
 
     private boolean huki1Added = false;
     private boolean huki2Added = false;
 
-=======
-    private boolean bunnki1Added = false;
-    private boolean huki1Added = false;
-    private boolean huk21Added = false;
 
->>>>>>> a94182bd195104a94af6811d0a5297581d5d95c4
+    
+    
+
+
     /**
      * Constructor for objects of class MyWorld.
      * 
