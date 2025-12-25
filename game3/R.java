@@ -3,13 +3,17 @@ import greenfoot.*;
 public class R extends Actor
 {
     private GreenfootImage baseImg;
+
     private boolean enterPressed = false;
+
+    private int rure;
 
     // コンストラクタ（最初に一度だけ実行される）
     public R() {
-        baseImg = new GreenfootImage("publicdomainq-0007601btydle.png");
+        baseImg = new GreenfootImage("Roulette.png");
         baseImg.scale(150,150);   // ←  最初から縮小しておく
         setImage(baseImg);        // ← 初期表示も正しい大きさになる
+        rure = 0;
     }
 
     public void act()
@@ -32,5 +36,9 @@ public class R extends Actor
             MyWorld world = (MyWorld)getWorld();
             world.rouletteSpin();
         }
+    }
+    public int getRure() 
+    {
+        return rure;
     }
 }
