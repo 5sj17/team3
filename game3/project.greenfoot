@@ -46,26 +46,16 @@ dependency7.type=UsesDependency
 dependency8.from=MyWorld
 dependency8.to=Huki2
 dependency8.type=UsesDependency
-<<<<<<< HEAD
+dependency9.from=MyWorld
+dependency9.to=status_heart
+dependency9.type=UsesDependency
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
-height=1056
-package.numDependencies=8
-package.numTargets=15
-=======
-dependency9.from=MyWorld
-dependency9.to=status_heart
-dependency9.type=UsesDependency
-editor.fx.0.height=739
-editor.fx.0.width=816
-editor.fx.0.x=921
-editor.fx.0.y=103
 height=826
 package.numDependencies=12
 package.numTargets=17
->>>>>>> 2939b62933ad5a0e3a421108433e0fe6852969e2
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
