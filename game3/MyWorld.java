@@ -14,10 +14,10 @@ public class MyWorld extends World
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
     private title titleObj;//title
-    
+
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
-    
+
     private int rouletteCount = 0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 5;
 
@@ -45,12 +45,9 @@ public class MyWorld extends World
             startGame();
         }
 
-  
     }
 
-
     
-
     private void startGame()
     {
         start = true;
@@ -71,26 +68,25 @@ public class MyWorld extends World
 
         addObject(new yaji(), 720, 100); 
         addObject(new R(), 600, 100); 
-        
+
         addObject(new Bunnki2(), 430, 220);
         
         //addObject(new Huki2(), 430, 495);
     }
 
-        /*
-        if(rure_count == 1)
-        {
-            if(rure == 1)
-            {
-               トラブルマスの処理 
-            }
-            else
-            {
-                ラッキーマスの処理
-            }           
-        }
-        */
-
+    /*
+    if(rure_count == 1)
+    {
+    if(rure == 1)
+    {
+    トラブルマスの処理 
+    }
+    else
+    {
+    ラッキーマスの処理
+    }           
+    }
+     */
 
     
     //ハートを初期表示
@@ -108,18 +104,18 @@ public class MyWorld extends World
 
     public void status_damage()
     {
-       currentHp--;// ダメージを受けるたび
-            int targetIndexToChange = currentHp;
-            
-            if (targetIndexToChange >= 0 && targetIndexToChange < 3) {
-                // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
-                replaceHeart(targetIndexToChange, "damage");
-                if (currentHp == 0) {
-                    System.out.println("Game Over!");
-                    // ゲームオーバー処理
-                }
-            } 
-          
+        currentHp--;// ダメージを受けるたび
+        int targetIndexToChange = currentHp;
+
+        if (targetIndexToChange >= 0 && targetIndexToChange < 3) {
+            // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
+            replaceHeart(targetIndexToChange, "damage");
+            if (currentHp == 0) {
+                System.out.println("Game Over!");
+                // ゲームオーバー処理
+            }
+        } 
+
     }
 
     public void rouletteSpin()
@@ -147,23 +143,21 @@ public class MyWorld extends World
     }
     //ハートを置きえかるメソッド
     private void replaceHeart(int index, String type) {
-        
+
         int targetX = HEART_X_POSITIONS[index];
         int targetY = HEART_Y_POS;
 
         if (type.equals("damage")) {
             removeObjects(getObjectsAt(targetX, targetY, null));
             addObject(new status_bw_heart(), targetX, targetY);
-            }
-            
+        }
+
         else if (type.equals("recover")) {
             removeObjects(getObjectsAt(targetX, targetY, null));
             addObject(new status_heart(), targetX, targetY);
-            }
         }
     }
-    
-    
-    
+}
 
+    
 
