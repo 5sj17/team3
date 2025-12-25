@@ -64,7 +64,7 @@ public class MyWorld extends World
 
         addObject(new Bunnki1(), 430, 250); 
 
-        addObject(new Huki1(), 430, 450); 
+        //addObject(new Huki1(), 430, 450); 
 
         showText( "", 450, 300 );
         showText( "", 450, 450 );
@@ -72,7 +72,7 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         addObject(new R(), 600, 100); 
         
-        //addObject(new Bunnki2(), 430, 220);
+        addObject(new Bunnki2(), 430, 220);
         
         //addObject(new Huki2(), 430, 495);
     }
