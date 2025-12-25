@@ -68,7 +68,7 @@ public class MyWorld extends World
             RAdded = true; // 二度追加されないようにする
         }
 
-
+        
     }
     //ハートを初期表示
     public void status_prepare()
