@@ -63,9 +63,9 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         addObject(new R(), 600, 100); 
         
-        addObject(new Bunnki2(), 430, 220);
+        //addObject(new Bunnki2(), 430, 220); //ここじゃない
         
-        addObject(new Huki2(), 430, 495);
+        //addObject(new Huki2(), 430, 495); //ここじゃない
     }
 
         /*
