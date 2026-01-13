@@ -97,10 +97,11 @@ public class MyWorld extends World
     }
     else
     {
-    ラッキーマスの処理
-    }           
-    }
-     */
+    if (/* ラッキーマスに止まった条件 */ 
+    //{
+    //startLuckyStage();
+    //}
+     
 
     
     //ハートを初期表示
