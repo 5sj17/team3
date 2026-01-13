@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class unlucky_stage extends World
 {
-    public unlucky_stage()
+
+    public unlucky_stage(int currentHp,int rouletteCount)
     {   
-        super(600, 400, 1); 
+        super(600, 400, 1);   
     }
 }
