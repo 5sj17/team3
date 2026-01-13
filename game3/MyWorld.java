@@ -21,6 +21,8 @@ public class MyWorld extends World
     private int rouletteCount = 0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 5;
 
+    private R roulette; //
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -47,7 +49,6 @@ public class MyWorld extends World
 
     }
 
-    
     private void startGame()
     {
         start = true;
@@ -57,40 +58,58 @@ public class MyWorld extends World
         removeObject(titleObj);
 
         addObject(new Taro(), 430, 350); 
+
         status_prepare(currentHp);
 
-        addObject(new Bunnki1(), 430, 250); 
 
-        addObject(new Huki1(), 430, 450); 
-
-        showText( "", 450, 300 );
-        showText( "", 450, 450 );
+        
 
         addObject(new yaji(), 720, 100); 
-        addObject(new R(), 600, 100); 
+        roulette = new R();
+        addObject(roulette, 600, 100);
 
-        addObject(new Bunnki2(), 430, 220);
+   
+      
 
-        addObject(new Huki2(), 430, 495);
+        //addObject(new Huki1(), 430, 450); 
+
+        //addObject(new Huki2(), 430, 495);
+
+    }
+    public void bunki()
+    {
+        int rure_result = roulette.getRure(); //ルーレットの数字取
+
+        if(rouletteCount == 1 || rouletteCount == 2)
+        {
+            addObject(new Bunnki1(), 430, 250); 
+            if(rure_result == 1)
+            {
+                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
+            }
+            else
+            {
+                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+            }           
+        }else if(rouletteCount >=3 && rouletteCount <= 6)
+        {
+            addObject(new Bunnki2(), 430, 250); 
+            if(rure_result <= 2)
+            {
+                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
+            }
+            else
+            {
+                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+            }     
+        }
+
     }
 
-    /*
-    if(rure_count == 1)
-    {
-    if(rure == 1)
-    {
-    トラブルマスの処理 
-    }
-    else
-    {
-    ラッキーマスの処理
-    }           
-    }
-     */
-
-    
     //ハートを初期表示
+
     public void status_prepare(int hp)
+
     {
         int x = 70;    // 最初のX座標
         int deltaX = 130;     // X座標の増加分
@@ -132,6 +151,8 @@ public class MyWorld extends World
             Greenfoot.setWorld(new EndingWorld());
 
         }
+        
+        bunki();
     }
     //回復用
     public void status_heal()
@@ -162,6 +183,8 @@ public class MyWorld extends World
         }
     }
 }
-
-    
-
+//act()
+//startgame()
+//R()
+//rouletteSpin()
+//bunki()

@@ -13,7 +13,6 @@ public class R extends Actor
         baseImg = new GreenfootImage("Roulette.png");
         baseImg.scale(150,150);   // ←  最初から縮小しておく
         setImage(baseImg);        // ← 初期表示も正しい大きさになる
-        rure = 0;
     }
 
     public void act()
@@ -23,6 +22,7 @@ public class R extends Actor
         if ("enter".equals(key)) {
 
             int n = Greenfoot.getRandomNumber(6) + 1;
+            int rule = n;
 
             switch (n) {
                 case 1: setRotation(420); break;

@@ -22,7 +22,7 @@ public class lucky_stage extends World
         this.returnHp =hp;
         this.returnCount =Count;
         
-        setBackground("");
+        
         
         
         
