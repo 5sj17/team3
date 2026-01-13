@@ -37,7 +37,7 @@ public class MyWorld extends World
         showText( "Spaceを押してスタート", 450, 450 );
 
     }
-
+   
     public void act()
     {
         if (!start && Greenfoot.isKeyDown("space"))
@@ -57,7 +57,7 @@ public class MyWorld extends World
         removeObject(titleObj);
 
         addObject(new Taro(), 430, 350); 
-        status_prepare();
+        status_prepare(currentHp);
 
         addObject(new Bunnki1(), 430, 250); 
 
@@ -90,16 +90,20 @@ public class MyWorld extends World
 
     
     //ハートを初期表示
-
-    public void status_prepare()
+    public void status_prepare(int hp)
     {
         int x = 70;    // 最初のX座標
         int deltaX = 130;     // X座標の増加分
+       
         for(int i=0;i<3;i++){
             int xPos = x + (i * deltaX);
             HEART_X_POSITIONS[i] = xPos;
-            addObject(new status_heart(),xPos, HEART_Y_POS);
-        }
+            if(hp>i){
+                addObject(new status_heart(),xPos, HEART_Y_POS);
+            }else{
+                addObject(new status_bw_heart(),xPos, HEART_Y_POS);
+            }
+        }   
     }
 
     public void status_damage()
@@ -111,7 +115,7 @@ public class MyWorld extends World
             // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
             replaceHeart(targetIndexToChange, "damage");
             if (currentHp == 0) {
-                System.out.println("Game Over!");
+                Greenfoot.setWorld(new EndingWorld());
                 // ゲームオーバー処理
             }
         } 
