@@ -113,6 +113,7 @@ public class MyWorld extends World
         if (currentHp > 0) {
             currentHp--;
             replaceHeart(currentHp, "damage");
+             Greenfoot.setWorld(new EndingWorld(false));
         }
     }
 
