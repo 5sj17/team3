@@ -1,49 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class MyWorld extends World
 {
-
-
     private boolean taroAdded = false;
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
-
-   
-
-
     private boolean start = false;
-
-
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
     private title titleObj;//title
-
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
-
     private int rouletteCount = 0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 5;
-
-
-
-
     private boolean huki1Added = false;
     private boolean huki2Added = false;
-
     private R roulette; //
 
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -73,73 +47,56 @@ public class MyWorld extends World
         showText( "", 450, 300 );
         showText( "", 450, 450 ); 
         removeObject(titleObj);
-
-        addObject(new Taro(), 430, 350); 
-
-        status_prepare(currentHp);
-
-
         
-
+        addObject(new Taro(), 430, 350); 
+        status_prepare(currentHp);
+        
         addObject(new yaji(), 720, 100); 
         roulette = new R();
         addObject(roulette, 600, 100);
-
-   
-      
-
         //addObject(new Huki1(), 430, 450); 
 
         //addObject(new Huki2(), 430, 495);
-
     }
     public void bunki()
     {
-        int rure_result = roulette.getRure(); //ルーレットの数字取
+        int rure_result = roulette.getRure(); 
 
-        if(rouletteCount == 1 || rouletteCount == 2)
+        if(rouletteCount <= 2)
         {
-            addObject(new Bunnki1(), 430, 250); 
-            if(rure_result == 1)
-            {
-                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
-            }
-            else
-            {
-                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
-            }           
-        }else if(rouletteCount >=3 && rouletteCount <= 6)
+            addObject(new Bunnki1(), 430, 250);
+        }
+        else 
         {
             addObject(new Bunnki2(), 430, 250); 
-            if(rure_result <= 2)
-            {
-                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
-            }
-            else
-            {
-                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
-            }     
         }
-
+        
+        if(rure_result == 1)//アンラッキー
+        {
+            updateStageView("unlucky.png"); 
+            status_damage(); // ライフを1減らす
+        } 
+        else
+        {
+            updateStageView("lucky.png"); 
+            status_heal();
+        }     
+    }
+        
+    //背景画像を更新するための補助メソッド
+    private void updateStageView(String imageName) {
+        GreenfootImage bg = new GreenfootImage(imageName);
+        setBackground(bg);
     }
 
-
-    /*
-    if(rure_count == 1)
+    // 4. ダメージ処理（既存を整理）
+    public void status_damage()
     {
-    if(rure == 1)
-    {
-    トラブルマスの処理 
+        if (currentHp > 0) {
+            currentHp--;
+            replaceHeart(currentHp, "damage");
+        }
     }
-    else
-    {
-    if (/* ラッキーマスに止まった条件 */ 
-    //{
-    //startLuckyStage();
-    //}
-     
-
-    
 
     //ハートを初期表示
 
@@ -158,22 +115,6 @@ public class MyWorld extends World
                 addObject(new status_bw_heart(),xPos, HEART_Y_POS);
             }
         }   
-    }
-
-    public void status_damage()
-    {
-        currentHp--;// ダメージを受けるたび
-        int targetIndexToChange = currentHp;
-
-        if (targetIndexToChange >= 0 && targetIndexToChange < 3) {
-            // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
-            replaceHeart(targetIndexToChange, "damage");
-            if (currentHp == 0) {
-                Greenfoot.setWorld(new EndingWorld(false));
-                // ゲームオーバー処理
-            }
-        } 
-
     }
 
     public void rouletteSpin()
