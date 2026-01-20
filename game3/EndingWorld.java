@@ -11,18 +11,22 @@ public class EndingWorld extends World
         // MyWorldと同じサイズで作成
         super(851, 567, 1); 
 
-        // 背景を真っ黒にする（画像を用意している場合は setBackground("image.jpg") に書き換えてください）
+    
         getBackground().setColor(Color.BLACK);
         getBackground().fill();
 
         if (isClear) {
+            addObject(new hanabi(),425,300);
+            Greenfoot.playSound("hanabi.mp3");
             // ゲームクリア時の表示
             showText("Game Clear!", 425, 200);
-            showText("無事にゴールしました！", 425, 280);
+            showText("おめでとう！定年を迎えました", 425, 280);
         } else {
+            addObject(new bakuhatu(),425,300);
+            Greenfoot.playSound("bakuhatu.mp3");
             // ゲームオーバー時の表示
             showText("Game Over...", 425, 200);
-            showText("体力がなくなってしまいました。", 425, 280);
+            showText("残念・・・、あなたは首です。", 425, 280);
         }
 
         showText("Rキーを押してタイトルへ戻る", 425, 450);
