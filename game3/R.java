@@ -4,40 +4,81 @@ public class R extends Actor
 {
     private GreenfootImage baseImg;
 
-    private boolean enterPressed = false;
+    private boolean spinning = false;
+    private boolean counted = false;
 
+    private float speed;
+    private final float DECEL = 0.97f;
     private int rure;
 
-    // コンストラクタ（最初に一度だけ実行される）
-    public R() {
+    // 🔊 効果音
+    private GreenfootSound spinSound = new GreenfootSound("karakara.wav");
+    private GreenfootSound stopSound = new GreenfootSound("kachi.wav");
+
+    public R()
+    {
         baseImg = new GreenfootImage("Roulette.png");
-        baseImg.scale(150,150);   // ←  最初から縮小しておく
-        setImage(baseImg);        // ← 初期表示も正しい大きさになる
+        baseImg.scale(150,150);
+        setImage(baseImg);
+
+        spinSound.setVolume(70);
+        stopSound.setVolume(90);
     }
 
     public void act()
     {
-        String key = Greenfoot.getKey();
+        // 回転開始
+        if (Greenfoot.isKeyDown("enter") && !spinning) {
+            startSpin();
+        }
 
-        if ("enter".equals(key)) {
+        if (spinning) {
+            setRotation(getRotation() + Math.round(speed));
+            speed *= DECEL;
 
-            int n = Greenfoot.getRandomNumber(6) + 1;
-            int rule = n;
-
-            switch (n) {
-                case 1: setRotation(420); break;
-                case 2: setRotation(360); break;
-                case 3: setRotation(300); break;
-                case 4: setRotation(240); break;
-                case 5: setRotation(180); break;
-                case 6: setRotation(120); break;
+            if (speed < 0.5f) {
+                spinning = false;
+                spinSound.stop();   // 🔊 回転音停止
+                stopSound.play();  // 🔊 カチッ
+                decideResult();
             }
-
-            MyWorld world = (MyWorld)getWorld();
-            world.rouletteSpin();
+        }
+        else {
+            if (!counted) {
+                MyWorld world = (MyWorld)getWorld();
+                world.rouletteSpin();
+                counted = true;
+            }
         }
     }
-    public int getRure() 
+
+    private void startSpin()
+    {
+        spinning = true;
+        counted = false;
+
+        speed = Greenfoot.getRandomNumber(20) + 25;
+
+        // 🔊 回転音開始（ループ）
+        spinSound.playLoop();
+    }
+
+    private void decideResult()
+    {
+        int n = Greenfoot.getRandomNumber(6) + 1;
+        rure = n;
+
+        switch (n) {
+            case 1: setRotation(420); break;
+            case 2: setRotation(360); break;
+            case 3: setRotation(300); break;
+            case 4: setRotation(240); break;
+            case 5: setRotation(180); break;
+            case 6: setRotation(120); break;
+        }
+    }
+
+    public int getRure()
     {
         return rure;
     }
