@@ -15,13 +15,13 @@ public class EndingWorld extends World
         getBackground().setColor(Color.BLACK);
         getBackground().fill();
 
-        if (isClear) {
+        if (isClear==true) {
             addObject(new hanabi(),425,300);
             Greenfoot.playSound("hanabi.mp3");
             // ゲームクリア時の表示
             showText("Game Clear!", 425, 200);
             showText("おめでとう！定年を迎えました", 425, 280);
-        } else {
+        } else if(isClear==false) {
             addObject(new bakuhatu(),425,300);
             Greenfoot.playSound("bakuhatu.mp3");
             // ゲームオーバー時の表示

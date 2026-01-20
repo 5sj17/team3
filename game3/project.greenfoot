@@ -54,6 +54,7 @@ dependency8.type=UsesDependency
 dependency9.from=MyWorld
 dependency9.to=Bunnki2
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=941
@@ -61,6 +62,15 @@ editor.fx.0.y=110
 height=1056
 package.numDependencies=13
 package.numTargets=19
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=903
+package.numDependencies=11
+package.numTargets=17
+>>>>>>> 4064c27109d9ac2161e8c010187b663543a79ca1
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -128,7 +138,11 @@ target16.height=50
 target16.name=status_bw_heart
 target16.showInterface=false
 target16.type=ClassTarget
+<<<<<<< HEAD
 target16.width=110
+=======
+target16.width=100
+>>>>>>> 4064c27109d9ac2161e8c010187b663543a79ca1
 target16.x=0
 target16.y=0
 target17.height=50
@@ -211,5 +225,9 @@ target9.y=0
 version=3.0.0
 width=1936
 world.lastInstantiated=MyWorld
+<<<<<<< HEAD
 xPosition=0
+=======
+xPosition=524
+>>>>>>> 4064c27109d9ac2161e8c010187b663543a79ca1
 yPosition=0
