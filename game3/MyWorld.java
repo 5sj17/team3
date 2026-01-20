@@ -9,7 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
 
+
+    private boolean taroAdded = false;
+    private boolean RAdded = false;
+    private boolean bunnki1Added = false;
+    private boolean bunnki2Added = false;
+
+   
+
+
     private boolean start = false;
+
 
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
@@ -21,7 +31,14 @@ public class MyWorld extends World
     private int rouletteCount = 0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 5;
 
+
+
+
+    private boolean huki1Added = false;
+    private boolean huki2Added = false;
+
     private R roulette; //
+
 
     /**
      * Constructor for objects of class MyWorld.
@@ -85,26 +102,44 @@ public class MyWorld extends World
             addObject(new Bunnki1(), 430, 250); 
             if(rure_result == 1)
             {
-                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
+                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
             }
             else
             {
-                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
             }           
         }else if(rouletteCount >=3 && rouletteCount <= 6)
         {
             addObject(new Bunnki2(), 430, 250); 
             if(rure_result <= 2)
             {
-                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
             }
             else
             {
-                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
             }     
         }
 
     }
+
+
+    /*
+    if(rure_count == 1)
+    {
+    if(rure == 1)
+    {
+    トラブルマスの処理 
+    }
+    else
+    {
+    if (/* ラッキーマスに止まった条件 */ 
+    //{
+    //startLuckyStage();
+    //}
+     
+
+    
 
     //ハートを初期表示
 
@@ -134,7 +169,7 @@ public class MyWorld extends World
             // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
             replaceHeart(targetIndexToChange, "damage");
             if (currentHp == 0) {
-                Greenfoot.setWorld(new EndingWorld());
+                Greenfoot.setWorld(new EndingWorld(false));
                 // ゲームオーバー処理
             }
         } 
@@ -148,7 +183,7 @@ public class MyWorld extends World
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
 
         if (rouletteCount >= MAX_ROULETTE) {
-            Greenfoot.setWorld(new EndingWorld());
+            Greenfoot.setWorld(new EndingWorld(true));
 
         }
         
