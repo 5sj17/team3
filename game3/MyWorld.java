@@ -102,22 +102,22 @@ public class MyWorld extends World
             addObject(new Bunnki1(), 430, 250); 
             if(rure_result == 1)
             {
-                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
+                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount ));
             }
             else
             {
-                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
             }           
         }else if(rouletteCount >=3 && rouletteCount <= 6)
         {
             addObject(new Bunnki2(), 430, 250); 
             if(rure_result <= 2)
             {
-                Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new unlucky_stage(currentHp,rouletteCount));
             }
             else
             {
-                Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
+                //Greenfoot.setWorld(new lucky_stage(currentHp,rouletteCount));
             }     
         }
 
@@ -169,7 +169,7 @@ public class MyWorld extends World
             // 赤ハートを削除し、黒ハートを配置するメソッドを呼び出す
             replaceHeart(targetIndexToChange, "damage");
             if (currentHp == 0) {
-                Greenfoot.setWorld(new EndingWorld());
+                Greenfoot.setWorld(new EndingWorld(false));
                 // ゲームオーバー処理
             }
         } 
@@ -183,7 +183,7 @@ public class MyWorld extends World
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
 
         if (rouletteCount >= MAX_ROULETTE) {
-            Greenfoot.setWorld(new EndingWorld());
+            Greenfoot.setWorld(new EndingWorld(true));
 
         }
         
