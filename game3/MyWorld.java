@@ -6,9 +6,8 @@ public class MyWorld extends World
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
-    public boolean end_flag;
     private boolean start = false;
-    private int currentHp = 3;//ハートの初期値,現在
+    private int currentHp = 2;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
     private title titleObj;//title
     private final int[] HEART_X_POSITIONS = new int[3]; 
@@ -74,20 +73,8 @@ public class MyWorld extends World
             {
                 lucky_stage();
             }           
-        }else if(rouletteCount >=3 && rouletteCount <= 5)
+        }else if(rouletteCount >=3 && rouletteCount <= MAX_ROULETTE)
         {
-            addObject(new Bunnki2(), 430, 250); 
-            if(rure_result <= 2)
-            {
-                unlucky_stage();
-            }
-            else
-            {
-                lucky_stage();
-            }
-        }else if(rouletteCount == 6)
-        {
-            end_flag = true;
             addObject(new Bunnki2(), 430, 250); 
             if(rure_result <= 2)
             {
@@ -108,13 +95,11 @@ public class MyWorld extends World
     }
 
     public void lucky_stage()
-    {
+    {        
         updateStageView("lucky.png"); 
         status_heal();
-        if(end_flag == true)
-        {
-            endgame();
-        }
+        int end_count = roulette.getRure();
+   
     }
     
     public void unlucky_stage()
@@ -122,13 +107,6 @@ public class MyWorld extends World
         updateStageView("アンラッキー.png"); 
         status_damage(); // ライフを1減らす
     }
-    
-    public void unlucky_stage()
-    {
-        updateStageView("アンラッキー.png"); 
-            status_damage(); // ライフを1減らす
-    }
-        
 
     // 4. ダメージ処理（既存を整理）
     public void status_damage()
@@ -136,8 +114,11 @@ public class MyWorld extends World
         if (currentHp > 0) {
             currentHp--;
             replaceHeart(currentHp, "damage");
+        }else if (currentHp == 0){
+            Greenfoot.setWorld(new EndingWorld(false));
         }
     }
+
 
     //ハートを初期表示
     public void status_prepare(int hp)
@@ -159,15 +140,14 @@ public class MyWorld extends World
 
     public void rouletteSpin()
     {
-        rouletteCount++;
-
+  
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
 
         if (rouletteCount >= MAX_ROULETTE) {
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
-        
+        rouletteCount++;
         bunki();
     }
     //回復用
