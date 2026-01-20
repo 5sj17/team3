@@ -13,7 +13,7 @@ public class MyWorld extends World
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
     private int rouletteCount = 0;   // ルーレットを回した回数
-    private final int MAX_ROULETTE = 5;
+    private final int MAX_ROULETTE = 10;
     private boolean huki1Added = false;
     private boolean huki2Added = false;
     private R roulette; //
@@ -136,7 +136,7 @@ public class MyWorld extends World
 
     public void rouletteSpin()
     {
-        rouletteCount++;
+        
 
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
 
@@ -144,7 +144,7 @@ public class MyWorld extends World
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
-        
+        rouletteCount++;
         bunki();
     }
     //回復用
