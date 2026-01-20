@@ -6,6 +6,7 @@ public class MyWorld extends World
     private boolean RAdded = false;
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
+    public boolean end_flag;
     private boolean start = false;
     private int currentHp = 3;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
@@ -73,8 +74,20 @@ public class MyWorld extends World
             {
                 lucky_stage();
             }           
-        }else if(rouletteCount >=3 && rouletteCount <= 6)
+        }else if(rouletteCount >=3 && rouletteCount <= 5)
         {
+            addObject(new Bunnki2(), 430, 250); 
+            if(rure_result <= 2)
+            {
+                unlucky_stage();
+            }
+            else
+            {
+                lucky_stage();
+            }
+        }else if(rouletteCount == 6)
+        {
+            end_flag = true;
             addObject(new Bunnki2(), 430, 250); 
             if(rure_result <= 2)
             {
@@ -97,7 +110,17 @@ public class MyWorld extends World
     public void lucky_stage()
     {
         updateStageView("lucky.png"); 
-            status_heal();
+        status_heal();
+        if(end_flag == true)
+        {
+            endgame();
+        }
+    }
+    
+    public void unlucky_stage()
+    {
+        updateStageView("アンラッキー.png"); 
+        status_damage(); // ライフを1減らす
     }
     
     public void unlucky_stage()
