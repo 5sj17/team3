@@ -64,30 +64,48 @@ public class MyWorld extends World
 
         if(rouletteCount <= 2)
         {
-            addObject(new Bunnki1(), 430, 250);
-        }
-        else 
+            addObject(new Bunnki1(), 430, 250); 
+            if(rure_result == 1)
+            {
+                unlucky_stage();
+            }
+            else
+            {
+                lucky_stage();
+            }           
+        }else if(rouletteCount >=3 && rouletteCount <= 6)
         {
             addObject(new Bunnki2(), 430, 250); 
+            if(rure_result <= 2)
+            {
+                unlucky_stage();
+            }
+            else
+            {
+                lucky_stage();
+            }
         }
-        
-        if(rure_result == 1)//アンラッキー
-        {
-            updateStageView("unlucky.png"); 
-            status_damage(); // ライフを1減らす
-        } 
-        else
-        {
-            updateStageView("lucky.png"); 
-            status_heal();
-        }     
     }
+ 
         
     //背景画像を更新するための補助メソッド
     private void updateStageView(String imageName) {
         GreenfootImage bg = new GreenfootImage(imageName);
         setBackground(bg);
     }
+
+    public void lucky_stage()
+    {
+        updateStageView("lucky.png"); 
+            status_heal();
+    }
+    
+    public void unlucky_stage()
+    {
+        updateStageView("アンラッキー.png"); 
+            status_damage(); // ライフを1減らす
+    }
+        
 
     // 4. ダメージ処理（既存を整理）
     public void status_damage()
@@ -99,7 +117,6 @@ public class MyWorld extends World
     }
 
     //ハートを初期表示
-
     public void status_prepare(int hp)
 
     {
@@ -159,6 +176,7 @@ public class MyWorld extends World
         }
     }
 }
+//R()
 //act()
 //startgame()
 //R()
