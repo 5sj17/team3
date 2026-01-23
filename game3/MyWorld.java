@@ -54,9 +54,7 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         roulette = new R();
         addObject(roulette, 600, 100);
-        //addObject(new Huki1(), 430, 450); 
-
-        //addObject(new Huki2(), 430, 495);
+ 
     }
     public void bunki()
     {
@@ -68,16 +66,16 @@ public class MyWorld extends World
         }
         if(rouletteCount == 1)
         {
-            showText( "3以上でセーフ", 610, 190 );
+            showText( "2以上でセーフ", 610, 190 );
             if(rure_result == 1)
             {
                 unlucky_stage();
                 showText( "遅刻した　ライフ-1", 450, 450 );
             }
-            else
+            else if(rure_result <= 2)
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "定時退社した　ライフ+1", 450, 450 );
             }           
         }
         if(rouletteCount == 2)
@@ -91,20 +89,21 @@ public class MyWorld extends World
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "校長に褒められた　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 3)
         {
+            showText( "4以上でセーフ", 610, 190 );
             if(rure_result <= 3)
             {
                 unlucky_stage();
-                showText( "モンペの対処をした　ライフ-1", 450, 450 );
+                showText( "モンペに怒られた　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "モンペをうまく対処した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 4)
@@ -125,7 +124,74 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "テストが流出した　ライフ-1", 450, 450 );
+                showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 6)
+        {
+            if(rure_result <= 5)
+            {
+                unlucky_stage();
+                showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 7)
+        {
+            if(rure_result <= 5)
+            {
+                unlucky_stage();
+                showText( "減給された　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "ボーナスが入った　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 8)
+        {
+            if(rure_result <= 5)
+            {
+                unlucky_stage();
+                showText( "休日出勤した", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "有給休暇を貰った　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 9)
+        {
+            if(rure_result <= 5)
+            {
+                unlucky_stage();
+                showText( "　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 10)
+         
+        {
+            showText( "ラスト! 1が出たらGAME OVER", 610, 190 );
+            if(rure_result <= 10)
+            {
+                taiho_stage();
+                showText( "盗撮がバレた　ライフ-4", 450, 450 );
             }
             else
             {
@@ -134,8 +200,7 @@ public class MyWorld extends World
             }
         }
     }
- 
-        
+   
     //背景画像を更新するための補助メソッド
     private void updateStageView(String imageName) {
         GreenfootImage bg = new GreenfootImage(imageName);
@@ -153,7 +218,12 @@ public class MyWorld extends World
         updateStageView("アンラッキー.png"); 
             status_damage(); // ライフを1減らす
     }
-        
+    
+        public void taiho_stage()
+    {
+        //updateStageView("逮捕.png"); 
+            status_death(); // ライフを0にする
+    }
 
     // 4. ダメージ処理（既存を整理）
     public void status_damage()
@@ -161,7 +231,21 @@ public class MyWorld extends World
         if (currentHp > 0) {
             currentHp--;
             replaceHeart(currentHp, "damage");
-             Greenfoot.setWorld(new EndingWorld(false));
+            
+        }
+        if(currentHp == 0) {
+            Greenfoot.setWorld(new EndingWorld(false));
+        }
+    }
+    
+    public void status_death()
+    {
+        if (currentHp > 0) {
+            currentHp=currentHp-4;
+            replaceHeart(currentHp, "death");
+        }
+        if(currentHp == 0) {
+            Greenfoot.setWorld(new EndingWorld(false));
         }
     }
 
@@ -185,10 +269,7 @@ public class MyWorld extends World
 
     public void rouletteSpin()
     {
-        
-
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
-
         if (rouletteCount >= MAX_ROULETTE) {
             Greenfoot.setWorld(new EndingWorld(true));
 
