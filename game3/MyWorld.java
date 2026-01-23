@@ -62,27 +62,75 @@ public class MyWorld extends World
     {
         int rure_result = roulette.getRure(); 
 
-        if(rouletteCount <= 2)
+        if(rouletteCount == 0)
         {
-            addObject(new Bunnki1(), 430, 250); 
+            showText( "2以上でセーフ", 450, 450 );
+        }
+        if(rouletteCount == 1)
+        {
+            showText( "3以上でセーフ", 610, 190 );
             if(rure_result == 1)
             {
                 unlucky_stage();
+                showText( "遅刻した　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
             }           
-        }else if(rouletteCount >=3 && rouletteCount <= 6)
+        }
+        if(rouletteCount == 2)
         {
-            addObject(new Bunnki2(), 430, 250); 
+            showText( "3以上でセーフ", 610, 190 );
             if(rure_result <= 2)
             {
                 unlucky_stage();
+                showText( "校長に怒られた　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 3)
+        {
+            if(rure_result <= 3)
+            {
+                unlucky_stage();
+                showText( "モンペの対処をした　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 4)
+        {
+            if(rure_result <= 4)
+            {
+                unlucky_stage();
+                showText( "テストが流出した　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
+            }
+        }
+        if(rouletteCount == 5)
+        {
+            if(rure_result <= 5)
+            {
+                unlucky_stage();
+                showText( "テストが流出した　ライフ-1", 450, 450 );
+            }
+            else
+            {
+                lucky_stage();
+                showText( "調子に乗るな　ライフ+1", 450, 450 );
             }
         }
     }
