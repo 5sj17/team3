@@ -33,11 +33,9 @@ public class MyWorld extends World
 
     public void act()
     {
-        if (!start) {
-            String key = Greenfoot.getKey();
-            if ("space".equals(key)) {
-                startGame();
-            }
+        if (!start && Greenfoot.isKeyDown("space"))
+        {
+            startGame(); 
         }
     }
 
@@ -55,7 +53,7 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         roulette = new R();
         addObject(roulette, 600, 100);
-
+        showText( "Enterでルーレットを回す", 450, 450 );
     }
 
     public void bunki()
@@ -74,7 +72,7 @@ public class MyWorld extends World
                 unlucky_stage();
                 showText( "遅刻した　ライフ-1", 450, 450 );
             }
-            else if(rure_result <= 2)
+            else if(rure_result >= 2)
             {
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
@@ -82,8 +80,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 2)
         {
-            showText( "3以上でセーフ", 610, 190 );
-            if(rure_result <= 2)
+            showText( "2以上でセーフ", 610, 190 );
+            if(rure_result == 1)
             {
                 unlucky_stage();
                 showText( "校長に怒られた　ライフ-1", 450, 450 );
@@ -96,8 +94,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 3)
         {
-            showText( "4以上でセーフ", 610, 190 );
-            if(rure_result <= 3)
+            showText( "2以上でセーフ", 610, 190 );
+            if(rure_result == 1)
             {
                 unlucky_stage();
                 showText( "モンペに怒られた　ライフ-1", 450, 450 );
@@ -110,7 +108,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 4)
         {
-            if(rure_result <= 4)
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
             {
                 unlucky_stage();
                 showText( "テストが流出した　ライフ-1", 450, 450 );
@@ -123,7 +122,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 5)
         {
-            if(rure_result <= 5)
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
             {
                 unlucky_stage();
                 showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
@@ -136,7 +136,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 6)
         {
-            if(rure_result <= 5)
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
             {
                 unlucky_stage();
                 showText( "校長と激突した　ライフ-1", 450, 450 );
@@ -149,7 +150,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 7)
         {
-            if(rure_result <= 5)
+            showText( "4以上でセーフ", 610, 190 );
+            if(rure_result <= 4)
             {
                 unlucky_stage();
                 showText( "減給された　ライフ-1", 450, 450 );
@@ -162,7 +164,8 @@ public class MyWorld extends World
         }
         if(rouletteCount == 8)
         {
-            if(rure_result <= 5)
+            showText( "4以上でセーフ", 610, 190 );
+            if(rure_result <= 4)
             {
                 unlucky_stage();
                 showText( "休日出勤した　ライフ-1", 450, 450 );
@@ -175,6 +178,7 @@ public class MyWorld extends World
         }
         if(rouletteCount == 9)
         {
+            showText( "5以上でセーフ", 610, 190 );
             if(rure_result <= 5)
             {
                 unlucky_stage();
@@ -190,7 +194,7 @@ public class MyWorld extends World
 
         {
             showText( "ラスト! 1が出たらGAME OVER", 610, 190 );
-            if(rure_result <= 10)
+            if(rure_result == 1)
             {
                 taiho_stage();
                 showText( "飲酒運転がバレた　ライフ-4", 450, 450 );
@@ -242,13 +246,7 @@ public class MyWorld extends World
 
     public void status_death()
     {
-        if (currentHp > 0) {
-            currentHp=currentHp-3;
-            replaceHeart(currentHp, "death");
-        }
-        if(currentHp <= 0) {
-            Greenfoot.setWorld(new EndingWorld(false));
-        }
+        Greenfoot.setWorld(new EndingWorld(false));
     }
 
     //ハートを初期表示
@@ -277,7 +275,6 @@ public class MyWorld extends World
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
-        
         bunki();
     }
     //回復用
