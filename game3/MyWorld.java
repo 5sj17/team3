@@ -33,11 +33,9 @@ public class MyWorld extends World
 
     public void act()
     {
-        if (!start) {
-            String key = Greenfoot.getKey();
-            if ("space".equals(key)) {
-                startGame();
-            }
+        if (!start && Greenfoot.isKeyDown("space"))
+        {
+            startGame(); 
         }
     }
 
@@ -55,7 +53,7 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         roulette = new R();
         addObject(roulette, 600, 100);
-
+        showText( "Enterでルーレットを回す", 450, 450 );
     }
 
     public void bunki()
@@ -74,7 +72,7 @@ public class MyWorld extends World
                 unlucky_stage();
                 showText( "遅刻した　ライフ-1", 450, 450 );
             }
-            else if(rure_result <= 2)
+            else if(rure_result >= 2)
             {
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
@@ -271,12 +269,12 @@ public class MyWorld extends World
 
     public void rouletteSpin()
     {
+        rouletteCount++;
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
         if (rouletteCount >= MAX_ROULETTE) {
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
-        rouletteCount++;
         bunki();
     }
     //回復用
