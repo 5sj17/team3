@@ -78,7 +78,6 @@ public class MyWorld extends World
             {
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
-
             }           
         }
         if(rouletteCount == 2)
@@ -119,7 +118,7 @@ public class MyWorld extends World
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "テストが完成した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 5)
@@ -132,7 +131,7 @@ public class MyWorld extends World
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "譲った車が校長だった　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 6)
@@ -140,12 +139,12 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
+                showText( "校長と激突した　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "校長に挨拶した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 7)
@@ -179,12 +178,12 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "　ライフ-1", 450, 450 );
+                showText( "タイに左遷になった　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "室蘭に出張した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 10)
@@ -194,12 +193,12 @@ public class MyWorld extends World
             if(rure_result <= 10)
             {
                 taiho_stage();
-                showText( "盗撮がバレた　ライフ-4", 450, 450 );
+                showText( "飲酒運転がバレた　ライフ-4", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "校長と会食した　ライフ+1", 450, 450 );
 
             }
         }
