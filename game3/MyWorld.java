@@ -76,6 +76,7 @@ public class MyWorld extends World
             {
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
+
             }           
         }
         if(rouletteCount == 2)
@@ -197,6 +198,7 @@ public class MyWorld extends World
             {
                 lucky_stage();
                 showText( "調子に乗るな　ライフ+1", 450, 450 );
+
             }
         }
     }
@@ -231,9 +233,8 @@ public class MyWorld extends World
         if (currentHp > 0) {
             currentHp--;
             replaceHeart(currentHp, "damage");
-            
         }
-        if(currentHp == 0) {
+        if(currentHp <= 0) {
             Greenfoot.setWorld(new EndingWorld(false));
         }
     }
@@ -244,7 +245,7 @@ public class MyWorld extends World
             currentHp=currentHp-4;
             replaceHeart(currentHp, "death");
         }
-        if(currentHp == 0) {
+        if(currentHp <= 0) {
             Greenfoot.setWorld(new EndingWorld(false));
         }
     }
