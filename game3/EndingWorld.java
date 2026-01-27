@@ -26,7 +26,7 @@ public class EndingWorld extends World
             Greenfoot.playSound("bakuhatu.mp3");
             // ゲームオーバー時の表示
             showText("Game Over...", 425, 200);
-            showText("残念・・・、あなたは首です。", 425, 280);
+            showText("残念・・・、あなたはクビです。", 425, 280);
         }
 
         showText("Rキーを押してタイトルへ戻る", 425, 450);
