@@ -71,7 +71,7 @@ public class MyWorld extends World
             }
             else
             {
-                lucky_stage();
+                unlucky_stage();
             }           
         }else if(rouletteCount >=3 && rouletteCount <= 6)
         {
@@ -82,7 +82,7 @@ public class MyWorld extends World
             }
             else
             {
-                lucky_stage();
+                unlucky_stage();
             }
         }
     }
@@ -113,7 +113,9 @@ public class MyWorld extends World
         if (currentHp > 0) {
             currentHp--;
             replaceHeart(currentHp, "damage");
-             Greenfoot.setWorld(new EndingWorld(false));
+        }
+        if(currentHp==0){
+            Greenfoot.setWorld(new EndingWorld(false));
         }
     }
 
