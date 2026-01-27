@@ -5,20 +5,18 @@ public class R extends Actor
     private GreenfootImage baseImg;
 
     private boolean spinning = false;
-    private boolean counted = false;
-
     private float speed;
     private final float DECEL = 0.97f;
     private int rure;
 
-    // 🔊 効果音
+    // 効果音
     private GreenfootSound spinSound = new GreenfootSound("karakara.wav");
     private GreenfootSound stopSound = new GreenfootSound("kachi.wav");
 
     public R()
     {
         baseImg = new GreenfootImage("Roulette.png");
-        baseImg.scale(150,150);
+        baseImg.scale(150, 150);
         setImage(baseImg);
 
         spinSound.setVolume(70);
@@ -27,8 +25,11 @@ public class R extends Actor
 
     public void act()
     {
-        // 回転開始
-        if (Greenfoot.isKeyDown("enter") && !spinning) {
+        // Enterキーを「押した瞬間だけ」判定
+        getWorld().showText( "2以上でセーフ", 450, 450 );
+        
+        String key = Greenfoot.getKey();
+        if ("enter".equals(key) && !spinning) {
             startSpin();
         }
 
@@ -38,16 +39,14 @@ public class R extends Actor
 
             if (speed < 0.5f) {
                 spinning = false;
-                spinSound.stop();   // 🔊 回転音停止
-                stopSound.play();  // 🔊 カチッ
+                spinSound.stop();
+                stopSound.play();
+
                 decideResult();
-            }
-        }
-        else {
-            if (!counted) {
+
+                // ★ 回転が止まった瞬間に1回だけ結果処理
                 MyWorld world = (MyWorld)getWorld();
                 world.rouletteSpin();
-                counted = true;
             }
         }
     }
@@ -55,20 +54,16 @@ public class R extends Actor
     private void startSpin()
     {
         spinning = true;
-        counted = false;
-
         speed = Greenfoot.getRandomNumber(20) + 25;
 
-        // 🔊 回転音開始（ループ）
         spinSound.playLoop();
     }
 
     private void decideResult()
     {
-        int n = Greenfoot.getRandomNumber(6) + 1;
-        rure = n;
+        rure = Greenfoot.getRandomNumber(6) + 1;
 
-        switch (n) {
+        switch (rure) {
             case 1: setRotation(420); break;
             case 2: setRotation(360); break;
             case 3: setRotation(300); break;

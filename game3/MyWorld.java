@@ -12,8 +12,8 @@ public class MyWorld extends World
     private title titleObj;//title
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
-    private int rouletteCount = 0;   // ルーレットを回した回数
-    private final int MAX_ROULETTE = 5;
+    private int rouletteCount = 8;   // ルーレットを回した回数
+    private final int MAX_ROULETTE = 10;
     private boolean huki1Added = false;
     private boolean huki2Added = false;
     private R roulette; //
@@ -26,18 +26,21 @@ public class MyWorld extends World
 
         titleObj = new title();
         addObject(titleObj, 450, 250);
+        
+        Greenfoot.playSound("BGM.mp3");
 
         showText( "Spaceを押してスタート", 450, 450 );
 
     }
-   
+
     public void act()
     {
-        if (!start && Greenfoot.isKeyDown("space"))
-        {
-            startGame();
+        if (!start) {
+            String key = Greenfoot.getKey();
+            if ("space".equals(key)) {
+                startGame();
+            }
         }
-
     }
 
     private void startGame()
@@ -47,14 +50,16 @@ public class MyWorld extends World
         showText( "", 450, 300 );
         showText( "", 450, 450 ); 
         removeObject(titleObj);
-        
+
         addObject(new Taro(), 430, 350); 
         status_prepare(currentHp);
-        
+
         addObject(new yaji(), 720, 100); 
-      
- 
+        
+        roulette = new R();
+        addObject(roulette, 600, 100);
     }
+
     public void bunki()
     {
         int rure_result = roulette.getRure(); 
@@ -74,7 +79,7 @@ public class MyWorld extends World
             }
             else if(rure_result <= 2)
             {
-                lucky_stage();
+                taiho_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
             }           
 
@@ -118,7 +123,7 @@ public class MyWorld extends World
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "テストが完成した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 5)
@@ -131,7 +136,7 @@ public class MyWorld extends World
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "譲った車が校長だった　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 6)
@@ -139,12 +144,12 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
+                showText( "校長と激突した　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "校長に挨拶した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 7)
@@ -165,7 +170,7 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "休日出勤した", 450, 450 );
+                showText( "休日出勤した　ライフ-1", 450, 450 );
             }
             else
             {
@@ -178,30 +183,31 @@ public class MyWorld extends World
             if(rure_result <= 5)
             {
                 unlucky_stage();
-                showText( "　ライフ-1", 450, 450 );
+                showText( "タイに左遷になった　ライフ-1", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "室蘭に出張した　ライフ+1", 450, 450 );
             }
         }
         if(rouletteCount == 10)
         {
             showText( "ラスト! 1が出たらGAME OVER", 610, 190 );
-            if(rure_result <= 10)
+            if(rure_result >= 10)
             {
                 taiho_stage();
-                showText( "盗撮がバレた　ライフ-4", 450, 450 );
+                showText( "飲酒運転がバレた　ライフ-4", 450, 450 );
             }
             else
             {
                 lucky_stage();
-                showText( "調子に乗るな　ライフ+1", 450, 450 );
+                showText( "校長と会食した　ライフ+1", 450, 450 );
+
             }
         }
     }
-   
+
     //背景画像を更新するための補助メソッド
     private void updateStageView(String imageName) {
         GreenfootImage bg = new GreenfootImage(imageName);
@@ -212,20 +218,18 @@ public class MyWorld extends World
     {        
         updateStageView("lucky.png"); 
         status_heal();
-   
     }
-    
+
     public void unlucky_stage()
     {
         updateStageView("アンラッキー.png"); 
         status_damage(); // ライフを1減らす
     }
-
     
-        public void taiho_stage()
+    public void taiho_stage()
     {
         //updateStageView("逮捕.png"); 
-            status_death(); // ライフを0にする
+        status_death(); // ライフを0にする
     }
 
     // 4. ダメージ処理（既存を整理）
@@ -235,20 +239,14 @@ public class MyWorld extends World
             currentHp--;
             replaceHeart(currentHp, "damage");
         }
-        if(currentHp == 0) {
+        if(currentHp <= 0) {
             Greenfoot.setWorld(new EndingWorld(false));
         }
     }
-    
+
     public void status_death()
     {
-        if (currentHp > 0) {
-            currentHp=currentHp-4;
-            replaceHeart(currentHp, "death");
-        }
-        if(currentHp == 0) {
             Greenfoot.setWorld(new EndingWorld(false));
-        }
     }
 
 
@@ -258,7 +256,7 @@ public class MyWorld extends World
     {
         int x = 70;    // 最初のX座標
         int deltaX = 130;     // X座標の増加分
-       
+
         for(int i=0;i<3;i++){
             int xPos = x + (i * deltaX);
             HEART_X_POSITIONS[i] = xPos;
