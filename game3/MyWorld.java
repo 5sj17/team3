@@ -7,7 +7,7 @@ public class MyWorld extends World
     private boolean bunnki1Added = false;
     private boolean bunnki2Added = false;
     private boolean start = false;
-    private int currentHp = 2;//ハートの初期値,現在
+    private int currentHp = 1;//ハートの初期値,現在
     private final int MAX_HP = 3;//最大HP
     private title titleObj;//title
     private final int[] HEART_X_POSITIONS = new int[3]; 
@@ -65,7 +65,7 @@ public class MyWorld extends World
         if(rouletteCount <= 2)
         {
             addObject(new Bunnki1(), 430, 250); 
-            if(rure_result == 1)
+            if(rure_result <= 6)
             {
                 unlucky_stage();
             }
@@ -98,7 +98,6 @@ public class MyWorld extends World
     {        
         updateStageView("lucky.png"); 
         status_heal();
-        int end_count = roulette.getRure();
    
     }
     
