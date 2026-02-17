@@ -26,8 +26,6 @@ public class R extends Actor
     public void act()
     {
         // Enterキーを「押した瞬間だけ」判定
-        getWorld().showText( "2以上でセーフ", 450, 450 );
-        
         String key = Greenfoot.getKey();
         if ("enter".equals(key) && !spinning) {
             startSpin();
