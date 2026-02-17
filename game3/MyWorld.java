@@ -12,7 +12,7 @@ public class MyWorld extends World
     private title titleObj;//title
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
-    private int rouletteCount = 9;   // ルーレットを回した回数
+    private int rouletteCount =0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 10;
     private boolean huki1Added = false;
     private boolean huki2Added = false;
