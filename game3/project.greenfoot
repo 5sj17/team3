@@ -46,29 +46,13 @@ dependency8.type=UsesDependency
 dependency9.from=MyWorld
 dependency9.to=status_heart
 dependency9.type=UsesDependency
-editor.fx.0.height=739
-editor.fx.0.width=816
-<<<<<<< HEAD
-editor.fx.0.x=890
-editor.fx.0.y=168
-height=1056
-package.numDependencies=11
-package.numTargets=19
-=======
-<<<<<<< HEAD
-editor.fx.0.x=929
-editor.fx.0.y=191
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 height=832
 package.numDependencies=11
 package.numTargets=19
-=======
-editor.fx.0.x=1032
-editor.fx.0.y=187
-height=832
-package.numDependencies=11
-package.numTargets=17
->>>>>>> a2fabf5b7a3e0905db08b679aea12542c2e5496e
->>>>>>> dc68855bcc8fd668b10a074472c2fdbe0fe7d8bc
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -217,11 +201,7 @@ target9.width=80
 target9.x=0
 target9.y=0
 version=3.0.0
-<<<<<<< HEAD
-width=1936
-=======
 width=1132
->>>>>>> dc68855bcc8fd668b10a074472c2fdbe0fe7d8bc
 world.lastInstantiated=MyWorld
 xPosition=714
 yPosition=148

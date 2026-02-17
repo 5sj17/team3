@@ -33,11 +33,9 @@ public class MyWorld extends World
 
     public void act()
     {
-        if (!start) {
-            String key = Greenfoot.getKey();
-            if ("space".equals(key)) {
-                startGame();
-            }
+        if (!start && Greenfoot.isKeyDown("space"))
+        {
+            startGame(); 
         }
     }
 
@@ -55,18 +53,18 @@ public class MyWorld extends World
         addObject(new yaji(), 720, 100); 
         roulette = new R();
         addObject(roulette, 600, 100);
-
+        showText( "Enterでルーレットを回す", 450, 450 );
     }
 
     public void bunki()
     {
         int rure_result = roulette.getRure(); 
 
-       if(rouletteCount == 0)
+        if(rouletteCount == 0)
         {
-           showText( "2以上でセーフ", 450, 450 );
-       }
-       if(rouletteCount == 1)
+            showText( "2以上でセーフ", 450, 450 );
+        }
+        if(rouletteCount == 1)
         {
             showText( "2以上でセーフ", 610, 190 );
             if(rure_result == 1)
@@ -74,16 +72,16 @@ public class MyWorld extends World
                 unlucky_stage();
                 showText( "遅刻した　ライフ-1", 450, 450 );
             }
-            else if(rure_result <= 2)
+            else if(rure_result >= 2)
             {
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
             }           
-       }
-       if(rouletteCount == 2)
-       {
-            showText( "3以上でセーフ", 610, 190 );
-            if(rure_result <= 2)
+        }
+        if(rouletteCount == 2)
+        {
+            showText( "2以上でセーフ", 610, 190 );
+            if(rure_result == 1)
             {
                 unlucky_stage();
                 showText( "校長に怒られた　ライフ-1", 450, 450 );
@@ -94,10 +92,10 @@ public class MyWorld extends World
                 showText( "校長に褒められた　ライフ+1", 450, 450 );
             }
         }
-       if(rouletteCount == 3)
-       {
-            showText( "4以上でセーフ", 610, 190 );
-            if(rure_result <= 3)
+        if(rouletteCount == 3)
+        {
+            showText( "4以上でセーフ", 610, 190 );           
+            if(rure_result == 1)
             {
                 unlucky_stage();
                 showText( "モンペに怒られた　ライフ-1", 450, 450 );
@@ -107,10 +105,11 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "モンペをうまく対処した　ライフ+1", 450, 450 );
             }
-       }
-       if(rouletteCount == 4)
-       {
-            if(rure_result <= 4)
+        }
+        if(rouletteCount == 4)
+        {
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
             {
                 unlucky_stage();
                 showText( "テストが流出した　ライフ-1", 450, 450 );
@@ -120,10 +119,13 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "テストが完成した　ライフ+1", 450, 450 );
             }
-       }
-       if(rouletteCount == 5)
-       {
-            if(rure_result <= 5)
+
+        }
+        if(rouletteCount == 5)
+        {
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
+
             {
                 unlucky_stage();
                 showText( "通勤中に事故にあった　ライフ-1", 450, 450 );
@@ -133,10 +135,12 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "譲った車が校長だった　ライフ+1", 450, 450 );
             }
-       }
-       if(rouletteCount == 6)
-       {
-            if(rure_result <= 5)
+
+        }
+        if(rouletteCount == 6)
+        {
+            showText( "3以上でセーフ", 610, 190 );
+            if(rure_result <= 3)
             {
                 unlucky_stage();
                 showText( "校長と激突した　ライフ-1", 450, 450 );
@@ -146,10 +150,12 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "校長に挨拶した　ライフ+1", 450, 450 );
             }
-       }
-       if(rouletteCount == 7)
-       {
-            if(rure_result <= 5)
+        }
+        if(rouletteCount == 7)
+        {
+            showText( "4以上でセーフ", 610, 190 );
+            if(rure_result <= 4)
+
             {
                 unlucky_stage();
                 showText( "減給された　ライフ-1", 450, 450 );
@@ -159,10 +165,11 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "ボーナスが入った　ライフ+1", 450, 450 );
             }
-       }
-       if(rouletteCount == 8)
-       {
-            if(rure_result <= 5)
+        }
+        if(rouletteCount == 8)
+        {
+            showText( "4以上でセーフ", 610, 190 );
+            if(rure_result <= 4)
             {
                 unlucky_stage();
                 showText( "休日出勤した　ライフ-1", 450, 450 );
@@ -173,8 +180,10 @@ public class MyWorld extends World
                 showText( "有給休暇を貰った　ライフ+1", 450, 450 );
             }
         }
-       if(rouletteCount == 9)
-       {
+        if(rouletteCount == 9)
+        {
+            showText( "5以上でセーフ", 610, 190 );
+
             if(rure_result <= 5)
             {
                 unlucky_stage();
@@ -190,7 +199,9 @@ public class MyWorld extends World
 
         {
             showText( "ラスト! 1が出たらGAME OVER", 610, 190 );
-            if(rure_result <= 5)
+
+            if(rure_result == 1)
+
             {
                 taiho_stage();
                 showText( "飲酒運転がバレた　ライフ-4", 450, 450 );
@@ -242,10 +253,9 @@ public class MyWorld extends World
 
     public void status_death()
     {
-        
-            Greenfoot.setWorld(new EndingWorld(false));
-    }
 
+        Greenfoot.setWorld(new EndingWorld(false));
+    }
     //ハートを初期表示
     public void status_prepare(int hp)
 
@@ -272,7 +282,7 @@ public class MyWorld extends World
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
-        
+
         bunki();
     }
     //回復用
