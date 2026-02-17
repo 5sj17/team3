@@ -12,10 +12,13 @@ public class MyWorld extends World
     private title titleObj;//title
     private final int[] HEART_X_POSITIONS = new int[3]; 
     private final int HEART_Y_POS = 50; // 固定のY座標
+
     private int rouletteCount =0;   // ルーレットを回した回数
     private final int MAX_ROULETTE = 10;
+
     private boolean huki1Added = false;
     private boolean huki2Added = false;
+    GreenfootSound bgm = null;
     private R roulette; //
 
     public MyWorld()
@@ -26,6 +29,10 @@ public class MyWorld extends World
 
         titleObj = new title();
         addObject(titleObj, 450, 250);
+        
+        bgm = new GreenfootSound("BGM.mp3");
+        
+        stopped();
 
         showText( "Spaceを押してスタート", 450, 450 );
 
@@ -42,6 +49,7 @@ public class MyWorld extends World
     private void startGame()
     {
         start = true;
+        
 
         showText( "", 450, 300 );
         showText( "", 450, 450 ); 
@@ -51,8 +59,10 @@ public class MyWorld extends World
         status_prepare(currentHp);
 
         addObject(new yaji(), 720, 100); 
+
         roulette = new R();
         addObject(roulette, 600, 100);
+
         showText( "Enterでルーレットを回す", 450, 450 );
     }
 
@@ -62,7 +72,8 @@ public class MyWorld extends World
 
         if(rouletteCount == 0)
         {
-            showText( "2以上でセーフ", 450, 450 );
+            if(rure_result <= 6)
+                showText( "2以上でセーフ", 450, 450 );
         }
         if(rouletteCount == 1)
         {
@@ -77,21 +88,23 @@ public class MyWorld extends World
                 lucky_stage();
                 showText( "定時退社した　ライフ+1", 450, 450 );
             }           
-        }
-        if(rouletteCount == 2)
-        {
-            showText( "2以上でセーフ", 610, 190 );
-            if(rure_result == 1)
+
+        }else if(rouletteCount >=3 && rouletteCount <= MAX_ROULETTE)
+
+            if(rouletteCount == 2)
             {
-                unlucky_stage();
-                showText( "校長に怒られた　ライフ-1", 450, 450 );
+                showText( "2以上でセーフ", 610, 190 );
+                if(rure_result == 1)
+                {
+                    unlucky_stage();
+                    showText( "校長に怒られた　ライフ-1", 450, 450 );
+                }
+                else
+                {
+                    lucky_stage();
+                    showText( "校長に褒められた　ライフ+1", 450, 450 );
+                }
             }
-            else
-            {
-                lucky_stage();
-                showText( "校長に褒められた　ライフ+1", 450, 450 );
-            }
-        }
         if(rouletteCount == 3)
         {
             showText( "4以上でセーフ", 610, 190 );           
@@ -196,11 +209,12 @@ public class MyWorld extends World
             }
         }
         if(rouletteCount == 10)
-
         {
             showText( "ラスト! 1が出たらGAME OVER", 610, 190 );
 
+
             if(rure_result == 1)
+
 
             {
                 taiho_stage();
@@ -222,7 +236,7 @@ public class MyWorld extends World
     }
 
     public void lucky_stage()
-    {
+    {        
         updateStageView("lucky.png"); 
         status_heal();
     }
@@ -247,13 +261,14 @@ public class MyWorld extends World
             replaceHeart(currentHp, "damage");
         }
         if(currentHp <= 0) {
+            stopped();
             Greenfoot.setWorld(new EndingWorld(false));
         }
     }
 
     public void status_death()
     {
-
+        
         Greenfoot.setWorld(new EndingWorld(false));
     }
     //ハートを初期表示
@@ -279,6 +294,7 @@ public class MyWorld extends World
         rouletteCount++;
         showText("年数：" + rouletteCount + " / " + MAX_ROULETTE + "年目", 700, 500);
         if (rouletteCount >= MAX_ROULETTE) {
+            stopped();
             Greenfoot.setWorld(new EndingWorld(true));
 
         }
@@ -313,7 +329,18 @@ public class MyWorld extends World
             addObject(new status_heart(), targetX, targetY);
         }
     }
+    
+    public void stopped() {
+        bgm.stop();
+    }
+    
+    public void started()
+    {
+        bgm.play();
+    }
 }
+
+
 //R()
 //act()
 //startgame()
